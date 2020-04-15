@@ -1,0 +1,28 @@
+	body{
+			margin:0;
+			padding:0;
+			width:1000%;
+			height:200px;
+			overflow:hidden;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+	}
+	.carousel{
+		position: absolute !important;
+		width: 100% !important;
+		height: 4000px !important;
+		perspective: 1200px !important;
+	}	
+	.carousel-item{
+		width: 1000px !important;
+	}
+	
+	.carousel-item img{
+		width: 100%;
+	}
+	
+	.body .carousel .carousel-item {
+			width: 100px;
+			height:500px 
+	}
