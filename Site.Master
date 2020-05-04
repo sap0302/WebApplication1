@@ -1,0 +1,323 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebApplication1.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%: Page.Title %>- My ASP.NET Application</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.5.0/flexslider.min.css" rel="stylesheet">
+    <link href="popup-slider.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.5.0/jquery.flexslider-min.js"></script>
+    <script src="~/Scripts/popup-slider.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+    <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border:none; /* 3px solid #f1f1f1;*/
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+        .auto-style1 {
+            width: 104px;
+        }
+    </style>
+
+
+
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server">Properties made easier</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/">Home</a></li>
+                        <li><a runat="server" href="~/About">Register</a></li>
+                        
+                    </ul>
+                    <div style="width: auto; text-align: right; vertical-align:top">
+                    <asp:HyperLink ID="HyperLink2" runat="server" class="btn " data-toggle="modal" data-target="#modalRegisterForm">Login</asp:HyperLink>
+                    </div>
+                    
+                </div>
+               
+            </div>
+            
+        </div>
+
+
+
+ <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <label data-error="wrong" data-success="right" for="orangeForm-name">Your username</label>
+          <input type="text" id="orangeForm-name" class="form-control validate">       
+        </div>
+        <div class="md-form mb-4">
+          <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
+          <input type="password" id="orangeForm-pass" class="form-control validate">
+        </div>
+
+      </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <asp:HyperLink ID="HyperLink4" runat="server" class="btn " data-toggle="modal" data-target="#modalRegisterForm">Sign in</asp:HyperLink>
+         </div>
+       <div class="modal-footer d-flex justify-content-left">
+           <asp:HyperLink ID="HyperLink3" runat="server" class="btn " data-toggle="modal" data-target="#modalRegisterForm2">Forgot Username/Password</asp:HyperLink>
+      </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+         <div class="modal fade" id="modalRegisterForm2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">To restore username/password please enter</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <label data-error="wrong" data-success="right" for="orangeForm-name">Your e-mail address. Once you submit, check e-mail to restore login information.</label>
+          <input type="text" id="norangeForm-name" class="form-control validate">       
+        </div>
+      </div>
+        
+       <div class="modal-footer d-flex justify-content-left">
+           <asp:HyperLink ID="HyperLink5" runat="server" class="btn " data-toggle="modal" data-target="#modalRegisterForm2">Submit</asp:HyperLink>
+      </div>
+        
+      </div>
+    </div>
+  </div>
+        
+        &nbsp;<div class="container body-content">
+
+<script>
+   
+    $(function () {
+       $('#modal').modal(toggle)
+    });
+
+</script>
+
+
+      <div style="width: auto; text-align: center; vertical-align: top">
+          
+         <table style="margin-right: auto; margin-left: auto; vertical-align:top;text-align:left; border: none;">
+
+            <tr>
+                <td style="vertical-align: top" class="auto-style1">
+                    &nbsp;</td>  
+                <td width="800px">
+                    <asp:Label ID="lblLocation" runat="server" Text="Property location"></asp:Label>
+&nbsp;&nbsp;<asp:TextBox ID="txtproperty" runat="server" Height="19px" Width="192px"></asp:TextBox>
+                    &nbsp;
+                    <asp:Button ID="btnsearch" runat="server" BackColor="#ff6a00" Font-Bold="True" Text="Search" OnClick="btnsearch_Click" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="btnBuy" runat="server" BackColor="#ff6a00" Font-Bold="True" Text="Buying" />
+                &nbsp;
+                    &nbsp;
+                    <asp:Button ID="btnrent" runat="server" BackColor="#ff6a00" Font-Bold="True" Text="Renting" OnClick="btnrent_Click" />
+                &nbsp;&nbsp;
+                    <asp:Button ID="btnSell" runat="server" BackColor="#ff6a00" Font-Bold="True" Text="Selling" OnClick="btnSell_Click" />
+                </td>  
+            </tr>
+            <tr>
+                <td style="vertical-align: top" class="auto-style1">
+                    <asp:Label ID="lblFilter" runat="server" Font-Bold="True" Text="Filter"></asp:Label>
+                    <br />
+                   <br />
+                    <asp:Label ID="lblradius" runat="server" ForeColor="#FF6A00" Text="Search radius"></asp:Label>
+&nbsp;<asp:CheckBoxList ID="CheckBoxList1" runat="server" Width="121px" >
+                <asp:ListItem Value="0 - 20 Miles" Text="0 - 20 Miles"></asp:ListItem>
+                <asp:ListItem Value="20 - 50 Miles" Text="20 - 50 Miles"></asp:ListItem>
+                <asp:ListItem Value="50+ Miles" Text="50+ Miles"></asp:ListItem>
+                </asp:CheckBoxList>  
+                    <asp:Label ID="lblBed" runat="server" ForeColor="#FF6A00" Text="Bed"></asp:Label>
+&nbsp;<asp:CheckBoxList ID="CheckBoxList2" runat="server" >
+                <asp:ListItem Value="0 - 3" Text="0 - 3"></asp:ListItem>
+                <asp:ListItem Value="4 - 6" Text="4 - 6"></asp:ListItem>
+                <asp:ListItem Value="7+" Text="7+"></asp:ListItem>
+                </asp:CheckBoxList> 
+
+
+                    <asp:Label ID="lblbath" runat="server" ForeColor="#FF6A00" Text="Bath"></asp:Label>
+                <asp:CheckBoxList ID="CheckBoxList3" runat="server" >
+                <asp:ListItem Value="0 - 3" Text="0 - 3"></asp:ListItem>
+                <asp:ListItem Value="4 - 6" Text="4 - 6"></asp:ListItem>
+                <asp:ListItem Value="7+" Text="7+"></asp:ListItem>
+                </asp:CheckBoxList> 
+
+
+                    <asp:Label ID="lblprice" runat="server" ForeColor="#FF6A00" Text="Price Range"></asp:Label>
+                <asp:CheckBoxList ID="CheckBoxList4" runat="server" Width="172px" >
+                <asp:ListItem Value="$0 - $100000" Text="$0 - $100000"></asp:ListItem>
+                <asp:ListItem Value="$100000 - $400000" Text="$100000 - $400000"></asp:ListItem>
+                <asp:ListItem>$400000+</asp:ListItem>
+                </asp:CheckBoxList> 
+
+
+                    <br />
+
+
+                 </td>  
+                <td width="800px">
+                    <div style="width: 100%; text-align: center; vertical-align: middle">    
+                        <table>
+                            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                                               <tr>
+                                                   <td>&nbsp;</td>
+                                               </tr>
+                                               </asp:ContentPlaceHolder>
+                                               
+                    </table>
+                   </div> 
+                </td>  
+            </tr>
+        </table>
+    </div>
+                       
+            <footer>
+                <p>&copy;      <footer>
+                <p>&copy; <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>- My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        
+
+    </form>
+</body>
+</html>
